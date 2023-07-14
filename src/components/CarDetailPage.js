@@ -55,7 +55,7 @@ const CarDetailPage = () => {
     <div style={styles.container}>
       <img src={car.image} alt={car.name} style={styles.image} />
       <h2 style={styles.heading}>{car.name}</h2>
-      <p>{car.longdescription}</p>
+      <p style={{width:"600px"}}>{car.longdescription}</p>
       <p>Daily Rental Price: {car.rentalfeeperday}</p>
       <Link to={`/rentalform/${car.id}`}>
         <button style={styles.button}>Rent Me Now</button>
@@ -90,8 +90,9 @@ const styles = {
     backgroundColor: 'black',
     color: 'white',
     border: 'none',
-    borderRadius: '20px',
+    borderRadius: '15px',
     cursor: 'pointer',
+    height:'40px'
   },
   
   longdescription:{

@@ -17,7 +17,7 @@ const Car = ({ car }) => {
       <p style={{width:"500px",paddingLeft:"600px"}}>{car.shortdescription}</p>
       <p style={{fontSize:"24px",paddingLeft:"600px"}}>Daily Rental Price: {car.rentalfeeperday}</p>
       {/* <Link to={`/rentalform/${car.id}`}> */}
-      <button style={{marginLeft:"800px",backgroundColor:"black",color:"white",height:"40px",borderRadius:"15px",}}onClick={handleClick}>Rent Me Now</button>
+      <button style={{marginLeft:"800px",backgroundColor:"black",color:"white",height:"40px",borderRadius:"15px",cursor:"pointer"}}onClick={handleClick}>Rent Me Now</button>
       {/* </Link> */}
 
       
