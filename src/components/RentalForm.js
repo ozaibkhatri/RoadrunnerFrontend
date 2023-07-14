@@ -115,18 +115,18 @@ const RentalForm = () => {
 
     <>
     <div>
-      <h1 className='heading'>RENTAL FORM</h1>
+      <h1 style={{color:"white",backgroundColor:"black",display:"flex",alignItems:"center",justifyContent:"center", padding:"20px"}}>RENTAL FORM</h1>
       <form onSubmit={handleSubmit}>
-        <label>Name</label>
+        <label style={{marginLeft:"600px"}}>Name</label>
         <br />
-        <input type="text" name="name"
+        <input  style={{marginLeft:"600px",height:"30px",borderRadius:"10px", marginBottom:"10px"}} type="text" name="name"
         value={name} onChange={handleChange}
          />
         <br />
         <br />
-        <label>Phone</label>
+        <label style={{marginLeft:"600px"}}>Phone</label>
         <br />
-        <input
+        <input style={{marginLeft:"600px",height:"30px",borderRadius:"10px", marginBottom:"10px"}}
           type="text"
           name="phoneno"
           value={phoneno}
@@ -134,9 +134,9 @@ const RentalForm = () => {
         />
         <br />
         <br />
-        <label>Address</label>
+        <label style={{marginLeft:"600px"}}>Address</label>
         <br />
-        <input
+        <input style={{marginLeft:"600px",height:"30px",borderRadius:"10px", marginBottom:"10px"}}
           type="text"
           name="address"
           value={address}
@@ -144,28 +144,27 @@ const RentalForm = () => {
         />
         <br />
         <br />
-        <label>Driving Licences</label>
+        <label style={{marginLeft:"600px"}}>Driving Licences</label>
         <br />
-        <input
+        <input style={{marginLeft:"600px",height:"30px",borderRadius:"10px", marginBottom:"30px"}}
           type="text"
           name="driverlicenceno"
           value={driverlicenceno}
           onChange={handleChange}
         />
         <br />
-        <label>Rental Price</label>
+        <label style={{marginLeft:"600px"}}>Rental Price</label>
         <br />
-        <input
+        <input style={{marginLeft:"600px",height:"30px",borderRadius:"10px", marginBottom:"10px"}}
           type="text"
           name="price"
           value={datas.rentalfeeperday}
           onChange={handleChange}
         />
         <br/>
-        <label>Insurance</label>
+        <label style={{marginLeft:"600px"}}>Insurance</label>
         <br />
-        <br />
-        <Checkbox
+        <Checkbox style={{marginLeft:"600px"}}
           type="checkbox"
           name="insurance"
           value={calculateTotalRentalDays()}
@@ -173,18 +172,18 @@ const RentalForm = () => {
         />
         <br />
     
-        <label>Pick Date</label>
+        <label style={{marginLeft:"600px"}}>Pick Date</label>
         <br />
-        <input
+        <input style={{marginLeft:"600px",height:"30px"}}
           type="datetime-local"
           name="startdate"
           value={startdate}
           onChange={handleChange}
         />
         <br />
-        <label>End Date</label>
+        <label style={{marginLeft:"600px"}}>End Date</label>
         <br />
-        <input
+        <input style={{marginLeft:"600px",height:"30px"}}
           type="datetime-local"
           name="enddate"
           value={enddate}
@@ -192,9 +191,9 @@ const RentalForm = () => {
         />
         <br />
         <br />
-        <label>Total Amount</label>
+        <label style={{marginLeft:"600px"}}>Total Amount</label>
         <br />
-        <input
+        <input style={{marginLeft:"600px", marginBottom:"20px",height:"30px",borderRadius:"10px"}}
           type="text"
           name="totalprice"
           value={totalprice}
@@ -208,10 +207,10 @@ const RentalForm = () => {
           <input onClick={()=> handleSubmit()} type='button' value="Checkout" /> */}
         
           <Link to="/">
-        <button>return to home page</button>
+        <button style={{marginLeft:"600px", backgroundColor:"black",color:"white",height:"40px",borderRadius:"10px"}}>return to home page</button>
       </Link>
       <Link to="/thanks">
-        <button>Checkout</button>
+        <button style={{marginLeft:"20px", backgroundColor:"black",color:"white",height:"40px",borderRadius:"10px"}}>Checkout</button>
       </Link>
       </form>
     </div>
