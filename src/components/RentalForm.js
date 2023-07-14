@@ -98,7 +98,7 @@ const RentalForm = () => {
       insurance: formdata.insurance,
       totalprice: formdata.totalprice
     };
-    // console.log(data);
+   
     const response= fetch('http://localhost:8080/rentalform/postrental', {
       method: 'POST',
       headers: {
