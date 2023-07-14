@@ -12,7 +12,7 @@ const Car = ({ car }) => {
     <div className='carpage'>
       <img style={{width:"500px",height:"400px",display:"flex",justifyContent:"center",alignItems:"center",paddingLeft:"600px",paddingTop:"50px"}}src={car.image} alt={car.name} />
       <Link to={`/cardetails/${car.id}`}>
-      <h3 style={{fontSize:"30px",color:"black",paddingLeft:"700px"}}>{car.name}</h3>
+      <h3 style={{fontSize:"24px",color:"black",paddingLeft:"700px"}}>{car.name}</h3>
       </Link>
       <p style={{width:"500px",paddingLeft:"600px"}}>{car.shortdescription}</p>
       <p style={{fontSize:"24px",paddingLeft:"600px"}}>Daily Rental Price: {car.rentalfeeperday}</p>
