@@ -90,16 +90,16 @@ const RentalForm = () => {
     const data = {
       name: formdata.name,
       address: formdata.address,
-      phone: formdata.phoneno,
-      driver_licences: formdata.driverlicenceno,
-      pickdate: formdata.startdate,
-      dropdate: formdata.enddate,
-      rental_price: formdata.price,
+      phoneno: formdata.phoneno,
+      driverlicenceno: formdata.driverlicenceno,
+      startdate: formdata.startdate,
+      enddate: formdata.enddate,
+      price: formdata.price,
       insurance: formdata.insurance,
-      totalamount: formdata.totalprice
+      totalprice: formdata.totalprice
     };
     // console.log(data);
-    const response= fetch('http://localhost:8080/rentalform/post', {
+    const response= fetch('http://localhost:8080/rentalform/postrental', {
       method: 'POST',
       headers: {
         "Content-Type": 'application/json'

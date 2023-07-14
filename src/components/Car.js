@@ -10,7 +10,7 @@ const Car = ({ car }) => {
 
   return (
     <div className='carpage'>
-      <img style={{width:"500px",height:"400px",display:"flex",justifyContent:"center",alignItems:"center",paddingLeft:"600px",paddingTop:"50px"}}src={car.image} alt={car.name} />
+      <img style={{width:"500px",height:"400px",display:"flex",justifyContent:"center",alignItems:"center",paddingLeft:"600px",paddingTop:"20px"}}src={car.image} alt={car.name} />
       <Link to={`/cardetails/${car.id}`}>
       <h3 style={{fontSize:"24px",color:"black",paddingLeft:"700px"}}>{car.name}</h3>
       </Link>
