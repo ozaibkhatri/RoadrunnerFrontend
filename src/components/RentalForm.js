@@ -1,11 +1,10 @@
 import { Checkbox } from '@mui/material';
-import React, { useState } from 'react';
-import { useLocation } from 'react-router-dom';
+import React, { useEffect, useState } from 'react';
+import { Link, useLocation, useParams } from 'react-router-dom';
+
+
 const RentalForm = () => {
-  const [check, setcheck] = useState(false);
-  const location = useLocation();
-  const { state } = location;
-  const rentalfee = state ? state.rentalfee : null;
+  const{id}=useParams();
 
   const [formdata, setFormdata] = useState({
     name: '',
@@ -18,8 +17,29 @@ const RentalForm = () => {
     insurance: '',
     totalprice: ''
   });
+  const [check, setcheck] = useState(false);
+  const location = useLocation();
+  const { state } = location;
+  console.log({state})
+  const rentalfee = state ? state.rentalfeeperday : null;
+  const [datas,setdata]=useState('');
+  console.log(id)
 
-  const { name, address, phoneno, startdate, driverlicenceno, enddate, price, insurance, totalprice } = formdata;
+  
+
+  let { name, address, phoneno, startdate, driverlicenceno, enddate, price, insurance, totalprice } = formdata;
+
+  useEffect(() => {
+    fetch(`http://localhost:8080/cars/gets/${id}`)
+      .then((response) => response.json())
+      .then((data) =>{ setdata(data)
+        console.log(data)
+      })
+      .catch(err=>{
+        console.log(err)
+      });
+  }, []);
+  console.log(datas.rentalfeeperday);
 
   const handleChange = (event) => {
     setFormdata({ ...formdata, [event.target.name]: event.target.value });
@@ -49,24 +69,24 @@ const RentalForm = () => {
       console.log("total =", totalwithdamage);
       return totalwithdamage;
     } else {
-      const perdayrent = rentalfee;
+      const perdayrent = datas.rentalfeeperday;
       const start = new Date(startdate);
       const end = new Date(enddate);
       const totalrentaldays = (end - start) / (1000 * 60 * 60 * 24);
+      console.log({totalrentaldays, perdayrent})
       const totalwithoutdamage = totalrentaldays * perdayrent;
       console.log("total =", totalwithoutdamage);
-      return totalwithoutdamage;
+      totalprice = totalwithoutdamage;
     }
   };
 
   
-    const handlecheckbox = (e) => {
+    const handleCheckbox = (e) => {
       setcheck(e.target.checked);
     };
-  };
-
+ 
   const handleSubmit = (e) => {
-    e.preventDefault();
+    // e.preventDefault();
     const data = {
       name: formdata.name,
       address: formdata.address,
@@ -78,7 +98,7 @@ const RentalForm = () => {
       insurance: formdata.insurance,
       totalamount: formdata.totalprice
     };
-    console.log(data);
+    // console.log(data);
     const response= fetch('http://localhost:8080/rentalform/post', {
       method: 'POST',
       headers: {
@@ -89,15 +109,19 @@ const RentalForm = () => {
     if(response.ok){
     console.log("pass", response);
     }
-  };
 
+  }
   return (
+
+    <>
     <div>
-      <h1>RENTAL FORM</h1>
+      <h1 className='heading'>RENTAL FORM</h1>
       <form onSubmit={handleSubmit}>
         <label>Name</label>
         <br />
-        <input type="text" name="name" value={name} onChange={handleChange} />
+        <input type="text" name="name"
+        value={name} onChange={handleChange}
+         />
         <br />
         <br />
         <label>Phone</label>
@@ -134,7 +158,7 @@ const RentalForm = () => {
         <input
           type="text"
           name="price"
-          value={rentalfee}
+          value={datas.rentalfeeperday}
           onChange={handleChange}
         />
         <br/>
@@ -145,14 +169,14 @@ const RentalForm = () => {
           type="checkbox"
           name="insurance"
           value={calculateTotalRentalDays()}
-          onChange={handleCheckbox}
+          onChange={()=> handleCheckbox}
         />
         <br />
     
         <label>Pick Date</label>
         <br />
         <input
-          type="date"
+          type="datetime-local"
           name="startdate"
           value={startdate}
           onChange={handleChange}
@@ -161,7 +185,7 @@ const RentalForm = () => {
         <label>End Date</label>
         <br />
         <input
-          type="date"
+          type="datetime-local"
           name="enddate"
           value={enddate}
           onChange={handleChange}
@@ -178,10 +202,26 @@ const RentalForm = () => {
           readOnly
         />
         <br />
-        <input type="submit" value="Submit" />
+        
+
+        {/* <input type="submit" value="Cancel"  />
+          <input onClick={()=> handleSubmit()} type='button' value="Checkout" /> */}
+        
+          <Link to="/">
+        <button>return to home page</button>
+      </Link>
+      <Link to="/thanks">
+        <button>Checkout</button>
+      </Link>
       </form>
     </div>
+
+  
+    </>
   );
 };
 
 export default RentalForm;
+
+
+

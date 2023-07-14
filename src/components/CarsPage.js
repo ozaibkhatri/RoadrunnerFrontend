@@ -12,7 +12,7 @@ const CarsPage = () => {
 
   return (
     <div>
-      <h2>RoadRunner Luxury Cars Rentals</h2>
+      <h2 style={{color:"white",backgroundColor:"black",height:"60px",fontSize:"50px",textAlign:"center"}}>RoadRunner Luxury Cars Rentals</h2>
       {cars.map((car) => (
         <Car key={car.id} car={car} />
       ))}

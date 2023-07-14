@@ -1,6 +1,7 @@
 
 import React from 'react';
 
+
 const CarList = ({ cars}) => {
   return (
     <div className={styles.container}>
@@ -22,5 +23,5 @@ const CarList = ({ cars}) => {
 };
 
 
-
 export default CarList;
+
